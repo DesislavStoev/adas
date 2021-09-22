@@ -1,0 +1,4 @@
+{
+   "distance":1.0,
+   "accuracy":50.0
+}

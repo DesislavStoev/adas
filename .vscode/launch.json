@@ -5,12 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "hello_world",
+            "name": "adas",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hello_world (profile mode)",
+            "name": "adas (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"

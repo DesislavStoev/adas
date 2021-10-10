@@ -4,6 +4,7 @@ import 'package:adas/ui/Settings/settings_data.dart';
 import 'package:adas/ui/box_widget.dart';
 import 'package:adas/ui/camera_view.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
+import 'package:wakelock/wakelock.dart';
 
 class DetectionView extends StatefulWidget {
   @override
@@ -15,6 +16,8 @@ class _DetectionViewState extends State<DetectionView> {
 
   @override
   Widget build(BuildContext context) {
+    Wakelock.toggle(enable: true);
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(

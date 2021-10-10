@@ -21,8 +21,10 @@ class Recognition {
 
     var transLeft = max(0.1, location!.left * ratioX);
     var transTop = max(0.1, location!.top * ratioY);
+
     var transWidth = min(
         location!.width * ratioX, CameraViewSingleton.actualPreviewSize.width);
+
     var transHeigth = min(location!.height * ratioY,
         CameraViewSingleton.actualPreviewSize.height);
 

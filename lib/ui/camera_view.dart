@@ -1,5 +1,4 @@
 import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 import 'package:adas/tflite/classifier.dart';
 import 'package:adas/tflite/recognition.dart';
@@ -44,17 +43,19 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
   void initializeCamera() async {
     cameras = await availableCameras();
 
-    cameraController =
-        CameraController(cameras![0], ResolutionPreset.low, enableAudio: false);
+    cameraController = CameraController(cameras![0], ResolutionPreset.high,
+        enableAudio: false);
 
     await cameraController!.initialize().then((_) async {
       await cameraController!.startImageStream(onImage);
 
       Size previewSize = cameraController!.value.previewSize ?? Size(0, 0);
-      CameraViewSingleton.inputImageSize = previewSize;
       Size screenSize = MediaQuery.of(context).size;
-      CameraViewSingleton.screenSize = screenSize;
-      CameraViewSingleton.ratio = screenSize.width / previewSize.height;
+
+      //TODO X axis is not very accurate, need to fix it.
+      CameraViewSingleton.ratioX =
+          screenSize.width / (previewSize.width); //? empty spaces on the right
+      CameraViewSingleton.ratioY = screenSize.height / previewSize.height;
     });
   }
 
@@ -101,6 +102,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
   @override
   void dispose() async {
     super.dispose();
+    //TODO find better way to dispose
     await cameraController!.dispose();
     isolateUtils!.stop();
   }

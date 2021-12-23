@@ -16,17 +16,14 @@ class Recognition {
   double get score => _score;
 
   Rect get renderLocation {
-    var ratioX = CameraViewSingleton.ratio;
-    var ratioY = ratioX;
+    var ratioX = CameraViewSingleton.ratioX;
+    var ratioY = CameraViewSingleton.ratioY;
 
     var transLeft = max(0.1, location!.left * ratioX);
     var transTop = max(0.1, location!.top * ratioY);
 
-    var transWidth = min(
-        location!.width * ratioX, CameraViewSingleton.actualPreviewSize.width);
-
-    var transHeigth = min(location!.height * ratioY,
-        CameraViewSingleton.actualPreviewSize.height);
+    var transWidth = location!.width * ratioX;
+    var transHeigth = location!.height * ratioY;
 
     var transformedRect =
         Rect.fromLTWH(transLeft, transTop, transWidth, transHeigth);

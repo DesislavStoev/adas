@@ -43,7 +43,8 @@ class IsolateUtils {
         imageLib.Image image =
             ImageUtils.convertCameraImage(isolateData.cameraImage);
         if (Platform.isAndroid) {
-          image = imageLib.copyRotate(image, 90);
+          // image = imageLib.copyRotate(image, 90);
+          //TODO must fix rotation, currently works only on lanscapeLeft
         }
         Map<String, dynamic> results = classifier.predict(image);
         isolateData.responsePort!.send(results);

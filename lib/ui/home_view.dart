@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:adas/test_on_image/detection_test_view.dart';
 import 'package:adas/ui/Settings/adjust_view.dart';
 import 'package:adas/ui/detection_view.dart';
 
@@ -27,15 +26,6 @@ class HomeView extends StatelessWidget {
             );
           },
           child: Text('Detect'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DetectionTestView()),
-            );
-          },
-          child: Text('Detect Test'),
         ),
       ],
     );
